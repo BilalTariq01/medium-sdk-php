@@ -98,6 +98,15 @@ class Medium
     }
 
     /**
+     * Set proxy to use for the requests.
+     * @param array $proxy
+     */
+    public function setProxy($proxy)
+    {
+        $this->client->setProxy($proxy);
+    }
+
+    /**
      * Get the url to authenticate the user to medium.
      *
      * @return string

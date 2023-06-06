@@ -21,6 +21,12 @@ class Client
     private $client;
 
     /**
+     * Proxy to use for the requests.
+     * @var array
+     */
+    private $proxy = [];
+
+    /**
      * Ask medium for the access and refresh token
      * using the provided authorization code.
      *
@@ -49,6 +55,7 @@ class Client
         $client = new GuzzleClient([
             'base_uri' => $this->url,
             'exceptions' => false,
+            'proxy' => $this->proxy,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -87,6 +94,7 @@ class Client
         $client = new GuzzleClient([
             'base_uri' => $this->url,
             'exceptions' => false,
+            'proxy' => $this->proxy,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -111,6 +119,7 @@ class Client
         $this->client = new GuzzleClient([
             'base_uri' => $this->url,
             'exceptions' => false,
+            'proxy' => $this->proxy,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -135,4 +144,14 @@ class Client
 
         return json_decode((string) $response->getBody());
     }
+
+    /**
+     * Set the proxy to use for the requests.
+     * @param array $proxy
+     */
+    public function setProxy($proxy)
+    {
+        $this->proxy = $proxy;
+    }
+
 }
