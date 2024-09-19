@@ -107,6 +107,15 @@ class Medium
     }
 
     /**
+     * set state param
+     * @param string $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
      * Get the url to authenticate the user to medium.
      *
      * @return string
